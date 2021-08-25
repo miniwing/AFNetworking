@@ -447,6 +447,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setDownloadTaskDidResumeBlock:(nullable void (^)(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t fileOffset, int64_t expectedTotalBytes))block;
 
+/**
+  Harry for shortcut
+*/
+- (void)addDelegateForDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+                          progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
+                       destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
+                 completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler;
+				 
+
 @end
 
 ///--------------------
