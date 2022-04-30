@@ -138,9 +138,13 @@ Pod::Spec.new do |s|
 
 #import <Availability.h>
 
-#ifndef __IPHONE_10_0
-#  warning "This project uses features only available in iOS SDK 10.0 and later."
-#endif
+#ifndef __IPHONE_12_0
+#  warning "This project uses features only available in iOS SDK 12.0 and later."
+#endif /* __IPHONE_12_0 */
+
+#import <stdlib.h>
+#import <stdio.h>
+#import <string.h>
 
 #import <sys/socket.h>
 #import <netinet/in.h>
@@ -148,6 +152,8 @@ Pod::Spec.new do |s|
 #import <arpa/inet.h>
 #import <ifaddrs.h>
 #import <netdb.h>
+
+#import <pthread/pthread.h>
 
 #import <objc/message.h>
 #import <objc/runtime.h>
@@ -159,9 +165,6 @@ Pod::Spec.new do |s|
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
 #else /* __OBJC__ */
-#  import <stdlib.h>
-#  import <stdio.h>
-#  import <string.h>
 #endif /* !__OBJC__ */
 
 /******************************************************************************************************/
