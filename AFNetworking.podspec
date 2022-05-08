@@ -502,6 +502,7 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __DebugFunc__                              (__AUTO__)
+#define __DebugInfo__                              (__AUTO__)
 #define __DebugDebug__                             (__AUTO__)
 #define __DebugWarn__                              (__AUTO__)
 #define __DebugError__                             (__AUTO__)
@@ -509,6 +510,12 @@ __END_DECLS
 #define __DebugView__                              (__AUTO__)
 
 /******************************************************************************************************/
+
+#if __DebugInfo__
+#  define LogInfo(x)                               ____LoggerInfo x
+#else
+#  define LogInfo(x)
+#endif
 
 #if __DebugDebug__
 #  define LogDebug(x)                              ____LoggerDebug x
@@ -588,6 +595,13 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
+
+/******************************************************************************************************/
+
+NS_INLINE NSString * __STRING_WITH_DATA(NSData * aData, NSStringEncoding aEncoding) {
+  
+   return [[NSString alloc] initWithData:aData encoding:aEncoding];
+}
 
 /******************************************************************************************************/
 

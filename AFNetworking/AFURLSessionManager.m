@@ -170,10 +170,14 @@ static const void * const AuthenticationChallengeErrorKey = &AuthenticationChall
 
 #pragma mark - NSURLSessionTaskDelegate
 
-- (void)URLSession:(__unused NSURLSession *)session
-              task:(NSURLSessionTask *)task
-didCompleteWithError:(NSError *)error
-{
++ (nullable instancetype)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding {
+    return [[self alloc] initWithData:data encoding:encoding];
+}
+
+- (void)  URLSession:(__unused NSURLSession *)session
+                task:(NSURLSessionTask *)task
+didCompleteWithError:(NSError *)error {
+   
     error = objc_getAssociatedObject(task, AuthenticationChallengeErrorKey) ?: error;
     __strong AFURLSessionManager *manager = self.manager;
 
@@ -219,6 +223,9 @@ didCompleteWithError:(NSError *)error
     } else {
         dispatch_async(url_session_manager_processing_queue(), ^{
             NSError *serializationError = nil;
+           
+            LogInfo((@"\ntask : %@ : \nResponse: %@", task.response.URL, __STRING_WITH_DATA(data, NSUTF8StringEncoding)));
+           
             responseObject = [manager.responseSerializer responseObjectForResponse:task.response data:data error:&serializationError];
 
             if (self.downloadFileURL) {
