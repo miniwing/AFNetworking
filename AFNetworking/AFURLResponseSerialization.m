@@ -253,10 +253,21 @@ id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingOptions 
     NSError *serializationError = nil;
     
     id responseObject = [NSJSONSerialization JSONObjectWithData:data options:self.readingOptions error:&serializationError];
+   
+   if (nil == responseObject) {
+      
+      NSStringEncoding   eEncoding  = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+      NSString          *szData     = [[NSString alloc] initWithData:data encoding:eEncoding];
 
-    if (!responseObject)
-    {
+      responseObject = [NSJSONSerialization JSONObjectWithData:[szData dataUsingEncoding:NSUTF8StringEncoding] options:self.readingOptions error:&serializationError];
+
+   } /* End if () */
+   
+    if (!responseObject) {
+
+       
         if (error) {
+           
             *error = AFErrorWithUnderlyingError(serializationError, *error);
         }
         return nil;
