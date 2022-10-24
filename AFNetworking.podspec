@@ -33,7 +33,9 @@ Pod::Spec.new do |s|
 #                                  }
 
   s.pod_target_xcconfig         = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"AFNetworking\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                             ' MODULE=\"AFNetworking\" '
+                                           ]
                                   }
 
   s.source_files      = 'AFNetworking/AFNetworking.h'
