@@ -224,7 +224,7 @@ didCompleteWithError:(NSError *)error {
         dispatch_async(url_session_manager_processing_queue(), ^{
             NSError *serializationError = nil;
            
-            LogInfo((@"\ntask : %@ : \nResponse: %@", task.response.URL, __STRING_WITH_DATA(data, NSUTF8StringEncoding)));
+//            LogInfo((@"\ntask : %@ : \nResponse: %@", task.response.URL, __STRING_WITH_DATA(data, NSUTF8StringEncoding)));
            
             responseObject = [manager.responseSerializer responseObjectForResponse:task.response data:data error:&serializationError];
 
