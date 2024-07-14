@@ -10,11 +10,11 @@ Pod::Spec.new do |s|
 #  s.source   = { :git => 'https://github.com/AFNetworking/AFNetworking.git', :tag => s.version }
   s.source                      = { :path => "." }
 
-  s.tvos.deployment_target      = '10.0'
-  s.ios.deployment_target       = '10.0'
+  s.tvos.deployment_target      = '12.0'
+  s.ios.deployment_target       = '12.0'
 
   s.osx.deployment_target       = '10.10'
-  s.watchos.deployment_target   = '4.3'
+  s.watchos.deployment_target   = '5.0'
 
   s.ios.pod_target_xcconfig     = {
                                     'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.AFNetworking',
@@ -49,10 +49,10 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Reachability' do |ss|
-    ss.ios.deployment_target      = '10.0'
-    ss.watchos.deployment_target  = '4.3'
+    ss.ios.deployment_target      = '12.0'
+    ss.watchos.deployment_target  = '5.0'
     ss.osx.deployment_target      = '10.10'
-    ss.tvos.deployment_target     = '10.0'
+    ss.tvos.deployment_target     = '12.0'
 
     ss.source_files = 'AFNetworking/AFNetworkReachabilityManager.{h,m}'
   end
@@ -69,10 +69,10 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UIKit' do |ss|
-    ss.ios.deployment_target      = '10.0'
-    ss.watchos.deployment_target  = '4.3'
+    ss.ios.deployment_target      = '12.0'
+    ss.watchos.deployment_target  = '5.0'
     ss.osx.deployment_target      = '10.10'
-    ss.tvos.deployment_target     = '10.0'
+    ss.tvos.deployment_target     = '12.0'
 
     ss.dependency 'AFNetworking/NSURLSession'
 

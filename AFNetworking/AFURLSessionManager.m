@@ -171,7 +171,10 @@ static const void * const AuthenticationChallengeErrorKey = &AuthenticationChall
 #pragma mark - NSURLSessionTaskDelegate
 
 + (nullable instancetype)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding {
-    return [[self alloc] initWithData:data encoding:encoding];
+   
+   return [[NSString alloc] initWithData:data encoding:encoding];
+   
+//    return [[self alloc] initWithData:data encoding:encoding];
 }
 
 - (void)  URLSession:(__unused NSURLSession *)session
