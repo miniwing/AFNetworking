@@ -157,6 +157,7 @@ typedef void (^AFURLSessionTaskCompletionHandler)(NSURLResponse *response, id re
    if ([object isEqual:self.downloadProgress]) {
         if (self.downloadProgressBlock) {
             self.downloadProgressBlock(object);
+
         }
     }
     else if ([object isEqual:self.uploadProgress]) {
@@ -165,7 +166,6 @@ typedef void (^AFURLSessionTaskCompletionHandler)(NSURLResponse *response, id re
         }
     }
 }
-
 static const void * const AuthenticationChallengeErrorKey = &AuthenticationChallengeErrorKey;
 
 #pragma mark - NSURLSessionTaskDelegate
