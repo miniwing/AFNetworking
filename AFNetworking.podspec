@@ -10,16 +10,15 @@ Pod::Spec.new do |s|
 #  s.source   = { :git => 'https://github.com/AFNetworking/AFNetworking.git', :tag => s.version }
   s.source                      = { :path => "." }
 
-  s.tvos.deployment_target      = '12.0'
-  s.ios.deployment_target       = '12.0'
-
-  s.osx.deployment_target       = '10.15'
-  s.watchos.deployment_target   = '5.0'
+  s.ios.deployment_target       = ENV['ios.deployment_target']
+  s.watchos.deployment_target   = ENV['watchos.deployment_target']
+  s.tvos.deployment_target      = ENV['tvos.deployment_target']
+  s.osx.deployment_target       = ENV['osx.deployment_target']
 
   s.ios.pod_target_xcconfig     = {
                                     'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.AFNetworking',
-                                    'ENABLE_BITCODE'            => 'NO',
-                                    'SWIFT_VERSION'             => '5.0',
+                                    'ENABLE_BITCODE'            => ENV['ENABLE_BITCODE'],
+                                    'SWIFT_VERSION'             => ENV['SWIFT_VERSION'],
                                     'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
                                     'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                     'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
@@ -49,10 +48,11 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Reachability' do |ss|
-    ss.ios.deployment_target      = '12.0'
-    ss.watchos.deployment_target  = '5.0'
-    ss.osx.deployment_target      = '10.10'
-    ss.tvos.deployment_target     = '12.0'
+
+    ss.ios.deployment_target      = ENV['ios.deployment_target']
+    ss.watchos.deployment_target  = ENV['watchos.deployment_target']
+    ss.tvos.deployment_target     = ENV['tvos.deployment_target']
+    ss.osx.deployment_target      = ENV['osx.deployment_target']
 
     ss.source_files = 'AFNetworking/AFNetworkReachabilityManager.{h,m}'
   end
@@ -69,10 +69,11 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UIKit' do |ss|
-    ss.ios.deployment_target      = '12.0'
-    ss.watchos.deployment_target  = '5.0'
-    ss.osx.deployment_target      = '10.10'
-    ss.tvos.deployment_target     = '12.0'
+
+    ss.ios.deployment_target      = ENV['ios.deployment_target']
+    ss.watchos.deployment_target  = ENV['watchos.deployment_target']
+    ss.tvos.deployment_target     = ENV['tvos.deployment_target']
+    ss.osx.deployment_target      = ENV['osx.deployment_target']
 
     ss.dependency 'AFNetworking/NSURLSession'
 
