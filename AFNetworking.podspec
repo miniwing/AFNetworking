@@ -165,14 +165,14 @@ Pod::Spec.new do |s|
 #import <objc/message.h>
 #import <objc/runtime.h>
 
-#ifdef __OBJC__
+#if TARGET_OS_IOS || TARGET_OS_TV
 #  import <UIKit/UIKit.h>
-#  import <Foundation/Foundation.h>
-#  import <QuartzCore/QuartzCore.h>
-#  import <QuartzCore/CAAnimation.h>
-#  import <MessageUI/MessageUI.h>
-#else /* __OBJC__ */
-#endif /* !__OBJC__ */
+#elif TARGET_OS_WATCH
+#  import <WatchKit/WatchKit.h>
+#endif
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CAAnimation.h>
 
 /******************************************************************************************************/
 
@@ -207,6 +207,8 @@ Pod::Spec.new do |s|
 #endif
 
 /******************************************************************************************************/
+
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
 #  import <YYKit/YYKit.h>
@@ -251,6 +253,8 @@ Pod::Spec.new do |s|
 #     endif
 #  endif /* !strongify */
 #endif
+
+#endif // TARGET_OS_IOS || TARGET_OS_TV
 
 /******************************************************************************************************/
 
